@@ -29,8 +29,8 @@ type InputData struct {
 	GeocentricCoords Coordinates
 }
 
-// Функция считывает входные данные из csv-файла, лежавшего по пути filePath
-// Фукнция возвращает два экземпляра структуры InputData и ошибку
+// Функция считывает входные данные из csv-файла, лежащего по пути filePath
+// Фукнция возвращает два экземпляра структуры InputData или вызывает панику
 func ReadInputData(filePath string) (InputData, InputData) {
 	inputFile, err := os.Open(filePath)
 	if err != nil {
