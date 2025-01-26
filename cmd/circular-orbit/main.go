@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	inputDataFilePath := filepath.Join("data", "example.csv")
+	inputDataFilePath := filepath.Join("data", "input.csv")
 	inputData1, inputData2 := inputdata.ReadInputData(inputDataFilePath)
 
 	tempValueA1 := inputData1.RightAscension.Cos() * inputData1.Declination.Cos()
@@ -46,7 +46,7 @@ func main() {
 		inputData2.GeocentricCoords.Z*inputData2.GeocentricCoords.Z
 	rSin2_2 := r2_2 - rCos_2*rCos_2
 
-	a, a1 := 38.8, 38.9
+	a, a1 := inputData1.SemiMajorAxis, inputData1.SemiMajorAxis+0.1
 	f := angle.FromRadians(0.0)
 	x1, y1, z1 := 0.0, 0.0, 0.0
 	x2, y2, z2 := 0.0, 0.0, 0.0
