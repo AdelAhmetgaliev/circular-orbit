@@ -27,6 +27,9 @@ type InputData struct {
 
 	// Геоцентрические экваториальные координаты
 	GeocentricCoords Coordinates
+
+	// Большая полуось орбиты
+	SemiMajorAxis float64
 }
 
 // Функция считывает входные данные из csv-файла, лежащего по пути filePath
@@ -50,6 +53,7 @@ func ReadInputData(filePath string) (InputData, InputData) {
 	xArr := records[4]
 	yArr := records[5]
 	zArr := records[6]
+	aArr := records[7]
 
 	time1, _ := strconv.ParseFloat(strings.TrimSpace(timeArr[1]), 64)
 	time2, _ := strconv.ParseFloat(strings.TrimSpace(timeArr[2]), 64)
@@ -74,8 +78,10 @@ func ReadInputData(filePath string) (InputData, InputData) {
 	z2, _ := strconv.ParseFloat(strings.TrimSpace(zArr[2]), 64)
 	coords2 := Coordinates{x2, y2, z2}
 
-	inputData1 := InputData{time1, rightAscension1, declination1, coords1}
-	inputData2 := InputData{time2, rightAscension2, declination2, coords2}
+	a, _ := strconv.ParseFloat(strings.TrimSpace(aArr[1]), 64)
+
+	inputData1 := InputData{time1, rightAscension1, declination1, coords1, a}
+	inputData2 := InputData{time2, rightAscension2, declination2, coords2, a}
 
 	return inputData1, inputData2
 }
