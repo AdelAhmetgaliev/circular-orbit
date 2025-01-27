@@ -22,11 +22,11 @@ func main() {
 	tempValueB2 := inputData2.RightAscension.Sin() * inputData2.Declination.Cos()
 	tempValueC2 := inputData2.Declination.Sin()
 
-	if (tempValueA1*tempValueA1+tempValueB1*tempValueB1+tempValueC1*tempValueC1)-1.0 > constants.Epsilon {
+	if math.Abs((tempValueA1*tempValueA1+tempValueB1*tempValueB1+tempValueC1*tempValueC1)-1.0) > constants.Epsilon {
 		panic("The first temporary values are calculated incorrectly")
 	}
 
-	if (tempValueA2*tempValueA2+tempValueB2*tempValueB2+tempValueC2*tempValueC2)-1.0 > constants.Epsilon {
+	if math.Abs((tempValueA2*tempValueA2+tempValueB2*tempValueB2+tempValueC2*tempValueC2)-1.0) > constants.Epsilon {
 		panic("The second temporary values are calculated incorrectly")
 	}
 
