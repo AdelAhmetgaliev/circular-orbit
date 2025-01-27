@@ -101,7 +101,12 @@ func parseAngleFromDegrees(degreesArr []string) angle.Angle {
 	minute, _ := strconv.ParseInt(degreesArr[1], 10, 64)
 	second, _ := strconv.ParseFloat(degreesArr[2], 64)
 
-	degrees := float64(degree) + float64(minute)/60.0 + second/3600.0
+	var degrees float64
+	if degreesArr[0][0] != byte('-') {
+		degrees = float64(degree) + float64(minute)/60.0 + second/3600.0
+	} else {
+		degrees = float64(degree) - float64(minute)/60.0 - second/3600.0
+	}
 
 	return angle.FromDegrees(degrees)
 }
